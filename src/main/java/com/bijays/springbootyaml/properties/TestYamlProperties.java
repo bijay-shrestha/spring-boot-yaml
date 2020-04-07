@@ -7,8 +7,12 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 @PropertySource(
         factory= YamlPropertySourceFactory.class,
-        value = {"file:/Users/bijayshrestha/Dropbox/Workspaces/Backend/tomcat/conf/admin/test.yml",
-                "file:/Users/bijayshrestha/Dropbox/Workspaces/Backend/tomcat/conf/admin/bijay.yml"})
+        value =
+                {
+                        "file:${catalina.home}/conf/admin/test.yml",
+                        "file:${catalina.home}/conf/admin/bijay.yml",
+                        "file:${catalina.home}/conf/admin/application-${spring.profiles.active}.yml"
+                })
 public class TestYamlProperties {
 
 }
