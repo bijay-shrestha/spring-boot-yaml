@@ -1,16 +1,31 @@
 package com.bijays.springbootyaml;
 
+import com.bijays.springbootyaml.config.YamlPropertySourceFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.ConfigurableEnvironment;
 
 @SpringBootApplication
+@PropertySource(
+        factory= YamlPropertySourceFactory.class,
+        value =
+                {
+                        "file:${catalina.home}/conf/admin/test.yml",
+                        "file:${catalina.home}/conf/admin/bijay.yml",
+                        "file:${catalina.home}/conf/admin/application-${spring.profiles.active}.yml"
+                })
+public class SpringBootYamlApplication extends SpringBootServletInitializer {
 
-public class SpringBootYamlApplication {
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(SpringBootYamlApplication.class);
+    }
 
 	public static void main(String[] args) {
-
 		ConfigurableApplicationContext ctx =
 				SpringApplication.run(SpringBootYamlApplication.class, args);
 
@@ -29,3 +44,7 @@ public class SpringBootYamlApplication {
 	}
 
 }
+
+
+
+

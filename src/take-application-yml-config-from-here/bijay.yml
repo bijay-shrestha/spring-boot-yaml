@@ -1,0 +1,4 @@
+hello:
+  world: this is a big show!
+  this:
+    is: spring boot external file
