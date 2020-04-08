@@ -1,6 +1,3 @@
 spring:
   profiles:
     active: dev
-
-catalina:
-  home: /Users/bijayshrestha/Dropbox/Workspaces/Backend/tomcat
