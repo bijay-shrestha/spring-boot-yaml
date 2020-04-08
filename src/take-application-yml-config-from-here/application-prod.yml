@@ -1,5 +1,11 @@
+##### [START] CATALINA HOME CONFIG IN PRODUCTION [/START] ########
+## Important Note: ENABLE THIS ONLY IN CASE OF STAND-ALONE TOMCAT DEPLOYMENTS  ###
+######___ ***** ENTER PATH TO YOUR PRODUCTION'S STAND-ALONE TOMCAT SERVER ***** ____ ############
+
 catalina:
   home: /Users/bijayshrestha/Dropbox/Workspaces/Backend/tomcat
+
+##### [END] CATALINA HOME CONFIG [/END] #########
 
 server:
   port: 9090
