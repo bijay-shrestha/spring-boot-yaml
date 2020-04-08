@@ -3,12 +3,10 @@ package com.bijays.springbootyaml.resource;
 import com.bijays.springbootyaml.modal.Test;
 import com.bijays.springbootyaml.service.TestService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/test")
@@ -23,9 +21,19 @@ public class TestResource {
 
     @PostMapping
     public void saveTest(){
-        Test test =new Test(1L, "kulindaar", 'Y', new Date() );
+        Test test =new Test(2L, "test", 'Y', new Date() );
         testService.save(test);
         log.info ("SUCCESS :: {}","Test data "+ test.getName ()+ " inserted successfully!");
+    }
+
+    @GetMapping("/{testId}")
+    public String getTest(@PathVariable("testId") Long testId){
+        return "This is " + testService.getTest(testId).get().getName();
+    }
+
+    @GetMapping("/all")
+    public List<Test> getAllTests(){
+         return testService.findAll();
     }
 
     @GetMapping("/running")
