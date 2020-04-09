@@ -21,7 +21,7 @@ public class TestResource {
 
     @PostMapping
     public void saveTest(){
-        Test test =new Test(2L, "test", 'Y', new Date() );
+        Test test =new Test(1L, "test", 'Y', new Date() );
         testService.save(test);
         log.info ("SUCCESS :: {}","Test data "+ test.getName ()+ " inserted successfully!");
     }
